@@ -176,8 +176,11 @@ public class MySQLImport{
 		try {
 			stmt = conn.getConn().createStatement();
 			stmt.executeUpdate("TRUNCATE `buyerdata`;");
+			stmt.executeUpdate("TRUNCATE `buyerdata_rel`;");
 			stmt.executeUpdate("TRUNCATE `itemsold`;");
 			stmt.executeUpdate("TRUNCATE `itemsoldtrans`;");
+			stmt.executeUpdate("TRUNCATE `itemsoldtrans_rel`;");
+			stmt.executeUpdate("TRUNCATE `itemsoldtrans_ship`;");
 			stmt.executeUpdate("TRUNCATE `shipmentdata`;");
 			
 			text.setText("\nTablice wyczyszczone\n"+text.getText());

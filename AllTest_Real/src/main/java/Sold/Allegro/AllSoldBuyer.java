@@ -135,7 +135,7 @@ public class AllSoldBuyer {
 					user.put("company", UserStruct.getUserData().getUserCompany());
 					user.put("login", UserStruct.getUserData().getUserLogin());		
 					
-					System.out.println(UserStruct.getUserData().getUserFirstName()+" "+UserStruct.getUserData().getUserLastName());
+//					System.out.println(UserStruct.getUserData().getUserFirstName()+" "+UserStruct.getUserData().getUserLastName());
 				}
 
 				if(isBuyer(user)){
@@ -143,7 +143,7 @@ public class AllSoldBuyer {
 				}
 				
 				if(isByuer_rel(user_rel)){
-				buyerData.add(user_rel);	
+				buyerData_rel.add(user_rel);	
 				}
 				
 			}	

@@ -17,16 +17,21 @@ import MySql.MySQL;
 public class MySQL_Sold extends MySQL {
 	
 		public void getSold(){
-			String query=""
-					+ "SELECT "
-					+ "id, "
-					+ "title, "
-					+ "price, "
-					+ "FROM "
-					+ "allegro.itemsold;";
-			
-			
-			
+			String query="SELECT "
+					+"trans.itemsoldtrans_id, "
+					+"trans.info, "
+					+"sold.title, "
+					+"sold.price, "
+					+"sold.dateStart, "
+					+"sold.dateEnd "
+					+"FROM "
+					+"allegro.itemsoldtrans trans, "
+					+"allegro.itemsoldtrans_rel trans_rel, "
+					+"allegro.itemsold sold "
+					+"where "
+					+"trans.itemsoldtrans_id=trans_rel.itemsoldtrans_id and "
+					+"trans_rel.itemsold_id=sold.itemsold_id;";
+
 					setQuery(query);
 		}
 	

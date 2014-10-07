@@ -10,6 +10,8 @@ import javax.swing.JTextArea;
 
 
 
+
+
 import MySql.MySQL;
 import MySql.MySQL_Conf;
 
@@ -24,7 +26,18 @@ public class MySQL_SoldBuyer extends MySQL {
 		try {
 			stmt = conn.getConn().createStatement();
 			
+			
+
+			
 			for(int i=0; i<query.size();i++){
+				
+				String firstName=query.get(i).get("firstName");
+				
+				if(firstName!=null){
+				String lastName=query.get(i).get("lastName");
+				String address=query.get(i).get("adres");
+				String company=query.get(i).get("company");
+				
 				String row="INSERT INTO `allegro`.`buyerdata` ("
 								+ "`buyerdata_id`, "
 								+ "`firstName`, "
@@ -39,18 +52,20 @@ public class MySQL_SoldBuyer extends MySQL {
 								+ "VALUES "
 								+ "("
 								+ "'"+query.get(i).get("buyerdata_id")+"', "
-								+ "'"+query.get(i).get("firstName").replace("'"," ")+"', "
-								+ "'"+query.get(i).get("lastName").replace("'"," ")+"', "
-								+ "'"+query.get(i).get("adres").replace("'"," ")+"', "
+								+ "'"+firstName+"', "
+								+ "'"+lastName+"', "
+								+ "'"+address+"', "
 								+ "'"+query.get(i).get("city")+"', "
 								+ "'"+query.get(i).get("postCode")+"', "
 								+ "'"+query.get(i).get("phone")+"', "
-								+ "'"+query.get(i).get("company").replace("'"," ")+"', "
+								+ "'"+company+"', "
 								+ "'"+query.get(i).get("login")+"');";
 				
 				row = row.replace("\n", "").replace("\r", "");
 				
+				
 				stmt.executeUpdate(row);
+				}
 			}
 
 		} catch (SQLException e) {
@@ -64,6 +79,7 @@ public class MySQL_SoldBuyer extends MySQL {
 	public static void writeBuyerRel(Vector<Map<String,String>> query, JTextArea text , MySQL_Conf conn){
 		Statement stmt = null;
 		
+		System.out.println("dziala");
 		if(query.size()>0){
 			
 		
