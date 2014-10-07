@@ -1,7 +1,8 @@
-package Allegro;
+package Allegro.Connect;
 
 import java.rmi.RemoteException;
 
+import javax.swing.JTextArea;
 import javax.xml.rpc.ServiceException;
 
 import pl.allegro.webapi.service_php.DoGetShipmentDataRequest;
@@ -16,7 +17,7 @@ public class AllegroConnect {
 	private AllegroUser user;
 	private ServicePort allegro;
 	
-	public AllegroConnect() {
+	public AllegroConnect(JTextArea textInfo) {
 		// TODO Auto-generated constructor stub
 		try {
 			
@@ -24,12 +25,8 @@ public class AllegroConnect {
 		user = new AllegroUser(allegro);
 		login=allegro.doLogin(user.getLogin());
 		
-		//DoGetMyWonItemsResponse wonItems= allegro.doGetMyWonItems(new DoGetMyWonItemsRequest(login.getSessionHandlePart(), null, null, null, null, null, null));
-		//DoGetMySoldItemsResponse soldItems = allegro.doGetMySoldItems(new DoGetMySoldItemsRequest(login.getSessionHandlePart(), null, null, null, null, null, null, null));
-				
-		//System.out.println("Id: "+login.getUserId());
-		//System.out.println("identyfikator sesji: "+login.getSessionHandlePart());
-		
+		textInfo.setText("Połączenie z Allegro nawiązane\n"+textInfo.getText());
+//		textInfo.append("Połączenie z Allegro nawiązane\n");
 		
 		} catch (ServiceException e) {
 		// TODO Auto-generated catch block

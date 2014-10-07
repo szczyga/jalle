@@ -1,61 +1,58 @@
-package MySql;
+package Import;
 
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Map;
 import java.util.Vector;
 
-public class MySQLupdater{
-	
-	MySQL conn;
-	
-	public MySQLupdater() {
-		// TODO Auto-generated constructor stub
-		conn=new MySQL(); 
-	}
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
-	public void writeItemsSold(Vector<Map<String,String>> query){
-		Statement stmt = null;
-//		ResultSet rs = null;
-		
-		try {
-			stmt = conn.getConn().createStatement();
-			
-			for(int i=0; i<query.size();i++){
-				String row="INSERT INTO `allegro`.`itemsold` ("
-								+ "`id`, "
-								+ "`title`, "
-								+ "`price`, "
-								+ "`isForm`) "
-								+ "VALUES "
-								+ "("
-								+ "'"+query.get(i).get("id")+"', "
-								+ "'"+query.get(i).get("title").replace("'"," ")+"', "
-								+ "'"+query.get(i).get("price")+"', "
-								+ "'"+query.get(i).get("isForm")+"');";
-				
-				row = row.replace("\n", "").replace("\r", "");
-				System.out.println(row);
-				stmt.executeUpdate(row);
-			}
-			
-//			rs = stmt.executeQuery(query);
-//			while (rs.next()) {
-//				String id = rs.getString("id");
-//				String firstName = rs.getString("myuser");
-//				String lastName = rs.getString("webpage");
-//				System.out.println("ID: " + id + ", First Name: " + firstName
-//						+ ", Last Name: " + lastName);
-//			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+import MySql.MySQL_Conf;
+
+public class MySQLImport{
 	
-	public void writeBuyerData(Vector<Map<String,String>> query){
+//	public void writeItemsSold(Vector<Map<String,String>> query, JTextArea textInfo, MySQL_Conf conn){
+//		
+//		textInfo.setText("Iloś do zapiasania do bazy "+query.size()+"\n"+textInfo.getText());
+//		Statement stmt = null;
+//		
+//		if(query.size()>0){
+//			
+//		try {
+//			stmt = conn.getConn().createStatement();
+//			
+//			for(int i=0; i<query.size();i++){
+//				String row="INSERT INTO `allegro`.`itemsold` ("
+//								+ "`id`, "
+//								+ "`title`, "
+//								+ "`price`) "
+//								+ "VALUES "
+//								+ "("
+//								+ "'"+query.get(i).get("id")+"', "
+//								+ "'"+query.get(i).get("title").replace("'"," ")+"', "
+//								+ "'"+query.get(i).get("price")+"');";
+//				
+//				row = row.replace("\n", "").replace("\r", "");
+//				stmt.executeUpdate(row);
+//			}
+//
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		}
+//		else
+//		textInfo.setText("Nie można zapisać do MySQL\n"+textInfo.getText());
+//	}
+	
+	public void writeBuyerData(Vector<Map<String,String>> query, JTextArea text , MySQL_Conf conn){
 		Statement stmt = null;
-//		ResultSet rs = null;
+		
+		if(query.size()>0){
+			
 		
 		try {
 			stmt = conn.getConn().createStatement();
@@ -87,27 +84,24 @@ public class MySQLupdater{
 								+ "'"+query.get(i).get("login")+"');";
 				
 				row = row.replace("\n", "").replace("\r", "");
-				System.out.println(row);
+				
 				stmt.executeUpdate(row);
 			}
-			
-//			rs = stmt.executeQuery(query);
-//			while (rs.next()) {
-//				String id = rs.getString("id");
-//				String firstName = rs.getString("myuser");
-//				String lastName = rs.getString("webpage");
-//				System.out.println("ID: " + id + ", First Name: " + firstName
-//						+ ", Last Name: " + lastName);
-//			}
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}else
+		text.setText("Nie można zapisać do MySQL\n"+text.getText());
 	}
 	
-	public void writeItemsSoldTrans(Vector<Map<String,String>> query){
+	public void writeItemsSoldTrans(Vector<Map<String,String>> query, JTextArea text, MySQL_Conf conn){
 		Statement stmt = null;
 //		ResultSet rs = null;
+		
+		if(query.size()>0){
+			
 		
 		try {
 			stmt = conn.getConn().createStatement();
@@ -133,23 +127,19 @@ public class MySQLupdater{
 				stmt.executeUpdate(row);
 			}
 			
-//			rs = stmt.executeQuery(query);
-//			while (rs.next()) {
-//				String id = rs.getString("id");
-//				String firstName = rs.getString("myuser");
-//				String lastName = rs.getString("webpage");
-//				System.out.println("ID: " + id + ", First Name: " + firstName
-//						+ ", Last Name: " + lastName);
-//			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}else
+		text.setText("Nie można zapisać do MySQL\n"+text.getText());	
 	}
 	
-	public void writeShipmentData(Vector<Map<String,String>> query){
+	public void writeShipmentData(Vector<Map<String,String>> query, JTextArea text, MySQL_Conf conn){
 		Statement stmt = null;
-//		ResultSet rs = null;
+		
+		if(query.size()>0){
+			
 		
 		try {
 			stmt = conn.getConn().createStatement();
@@ -171,31 +161,27 @@ public class MySQLupdater{
 				stmt.executeUpdate(row);
 			}
 			
-//			rs = stmt.executeQuery(query);
-//			while (rs.next()) {
-//				String id = rs.getString("id");
-//				String firstName = rs.getString("myuser");
-//				String lastName = rs.getString("webpage");
-//				System.out.println("ID: " + id + ", First Name: " + firstName
-//						+ ", Last Name: " + lastName);
-//			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}else
+		text.setText("Nie można zapisać do MySQL\n"+text.getText());
+		
 	}
 	
-	public void clear(){
+	public static void clear(JTextArea text, MySQL_Conf conn){
 		Statement stmt = null;
 		
 		try {
 			stmt = conn.getConn().createStatement();
-//			String clear="TRUNCATE `itemsold`;"+"TRUNCATE `buyerdata`;"+"TRUNCATE `itemsoldtrans`;"+"TRUNCATE `shipmentdata`;";
 			stmt.executeUpdate("TRUNCATE `buyerdata`;");
 			stmt.executeUpdate("TRUNCATE `itemsold`;");
 			stmt.executeUpdate("TRUNCATE `itemsoldtrans`;");
 			stmt.executeUpdate("TRUNCATE `shipmentdata`;");
-
+			
+			text.setText("\nTablice wyczyszczone\n"+text.getText());
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

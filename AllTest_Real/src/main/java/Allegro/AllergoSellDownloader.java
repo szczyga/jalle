@@ -3,6 +3,9 @@ package Allegro;
 import java.rmi.RemoteException;
 import java.util.Vector;
 
+import javax.swing.JTextArea;
+
+import Allegro.Connect.AllegroConnect;
 import pl.allegro.webapi.service_php.DoGetMySellItemsRequest;
 import pl.allegro.webapi.service_php.DoGetMySellItemsResponse;
 import pl.allegro.webapi.service_php.SellItemStruct;
@@ -13,9 +16,9 @@ public class AllergoSellDownloader {
 	private AllegroConnect conn;
 	private Vector<SellItemStruct[]> sellItemTab;
 	
-	public AllergoSellDownloader() {
+	public AllergoSellDownloader(JTextArea textInfo) {
 		// TODO Auto-generated constructor stub
-		conn=new AllegroConnect();
+		conn=new AllegroConnect(textInfo);
 		sellItemTab=new Vector<SellItemStruct[]>();
 		
 		//Pobranie struktury sprzedawanych

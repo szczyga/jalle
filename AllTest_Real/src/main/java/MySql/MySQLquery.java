@@ -15,14 +15,14 @@ public class MySQLquery extends AbstractTableModel {
   Vector cache; // will hold String[] objects . . .
   int colCount;
   String[] headers;
-  MySQL conn;
+  MySQL_Conf conn;
   Connection db;
   Statement statement;
 
   public MySQLquery() {
 	// TODO Auto-generated constructor stub
     cache = new Vector();
-    conn=new MySQL();
+    conn=new MySQL_Conf(null);
     try {
 		statement=conn.getConn().createStatement();
 	} catch (SQLException e) {

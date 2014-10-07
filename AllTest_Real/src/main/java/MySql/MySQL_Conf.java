@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class MySQL {
+import javax.swing.JTextArea;
+
+public class MySQL_Conf {
 
 	public Connection conn;
-	public MySQL(){
+	public MySQL_Conf(JTextArea text){
 		// TODO Auto-generated method stub
 		conn = null;
 		
@@ -19,6 +21,9 @@ public class MySQL {
 			String connectionUser = "root";
 			String connectionPassword = "";
 			conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
+			
+			text.setText("Połączenie z MySQL nawiązane\n"+text.getText());
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

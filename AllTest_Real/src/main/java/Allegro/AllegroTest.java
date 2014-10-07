@@ -20,6 +20,8 @@ import javax.xml.rpc.ServiceException;
 
 
 
+
+import Allegro.Connect.AllegroUser;
 import pl.allegro.webapi.service_php.DoGetMySoldItemsRequest;
 import pl.allegro.webapi.service_php.DoGetMySoldItemsResponse;
 import pl.allegro.webapi.service_php.DoGetPostBuyFormsDataForSellersRequest;

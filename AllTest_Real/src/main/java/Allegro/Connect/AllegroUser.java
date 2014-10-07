@@ -1,4 +1,4 @@
-package Allegro;
+package Allegro.Connect;
 
 import java.rmi.RemoteException;
 

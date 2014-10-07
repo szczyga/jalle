@@ -3,6 +3,9 @@ package Allegro;
 import java.rmi.RemoteException;
 import java.util.Vector;
 
+import javax.swing.JTextArea;
+
+import Allegro.Connect.AllegroConnect;
 import pl.allegro.webapi.service_php.DoGetMyNotSoldItemsRequest;
 import pl.allegro.webapi.service_php.DoGetMyNotSoldItemsResponse;
 import pl.allegro.webapi.service_php.NotSoldItemStruct;
@@ -13,9 +16,9 @@ public class AllegroNotSoldDownloader {
 	private AllegroConnect conn;
 	private Vector<NotSoldItemStruct[]> notSoldTab;
 	
-	public AllegroNotSoldDownloader() {
+	public AllegroNotSoldDownloader(JTextArea textInfo) {
 		// TODO Auto-generated constructor stub
-		conn=new AllegroConnect();
+		conn=new AllegroConnect(textInfo);
 		notSoldTab=new Vector<NotSoldItemStruct[]>();
 		
 		//Pobranie struktury niesprzedanych
